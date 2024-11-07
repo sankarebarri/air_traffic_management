@@ -24,3 +24,16 @@ class Flights(models.Model):
         max_length=20, 
         choices=[('Scheduled', 'Scheduled'), ('Delayed', 'Delayed'), ('Departed', 'Departed'), ('Arrived', 'Arrived'), ('Cancelled', 'Cancelled')]
     )
+
+    regime = models.CharField(
+        max_length=10, 
+        choices=[('Private', 'Private'), ('Military', 'Military'), ('Commercial', 'Commercial')],
+        default='Commercial',
+        help_text="Type of flight regime"
+    )
+    
+    class Meta:
+        verbose_name = 'Flight'
+        verbose_name_plural = 'Flights'
+    def __str__(self):
+        return f"{self.flight_number} - {self.call_sign} ({self.departure_airport} -> {self.arrival_airport})"
