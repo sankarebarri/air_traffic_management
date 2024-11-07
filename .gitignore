@@ -15,6 +15,7 @@ air_traffic_management/media/             # Local media files (useful for audio 
 /frontend/build/
 frontend/node_modules/
 frontend/.env
+FE
 
 # Ignore environment files
 *.env.local
