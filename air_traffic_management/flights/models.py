@@ -36,4 +36,4 @@ class Flights(models.Model):
         verbose_name = 'Flight'
         verbose_name_plural = 'Flights'
     def __str__(self):
-        return f"{self.flight_number} - {self.call_sign} ({self.departure_airport} -> {self.arrival_airport})"
+        return f"{self.call_sign} ({self.departure_airport} -> {self.arrival_airport})"

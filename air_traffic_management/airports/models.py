@@ -19,5 +19,5 @@ class Airport(models.Model):
     # etc
 
     def __str__(self):
-        return f"{self.name} ({self.icao_code})"
+        return f"{self.abbreviated_name} ({self.icao_code})"
 
