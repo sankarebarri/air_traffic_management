@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Scheduled Flights{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h3>Scheduled Flights</h3>
+    <div class="table-responsive">
+        <table class="table table-hover table-striped" id="scheduledFlightsTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Flight Number</th>
+                    <th>Departure Airport</th>
+                    <th>Arrival Airport</th>
+                    <th>Departure Time</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>EF789</td>
+                    <td>ATL</td>
+                    <td>SFO</td>
+                    <td>18:00</td>
+                    <td>Scheduled</td>
+                    <td>
+                        <a href="#" class="text-primary" title="Edit Flight" onclick="editFlight(1)"><i
+                                class="fas fa-pencil-alt"></i></a>
+                    </td>
+                </tr>
+                <!-- Additional rows can be added dynamically -->
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

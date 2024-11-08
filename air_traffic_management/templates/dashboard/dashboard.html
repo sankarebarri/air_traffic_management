@@ -1,0 +1,13 @@
+<!-- dashboard.html -->
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid text-white text-center rounded shadow-sm my-4"
+    style="background: linear-gradient(60deg, #6a89cc, #3b5998);">
+    <h1 class="display-4">Welcome to the Air Traffic Control Dashboard</h1>
+    <p class="lead">Your centralized hub for real-time air traffic management and flight scheduling.</p>
+</div>
+{% include "includes/hero_cards.html" %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Current Flights{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h3>Current Flights</h3>
+    <div class="table-responsive">
+        <table class="table table-hover table-striped" id="flightsTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Flight Number</th>
+                    <th>Departure Airport</th>
+                    <th>Arrival Airport</th>
+                    <th>Status</th>
+                    <th>ETA</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr onclick="openFlightDetails(1)">
+                    <td>AB123</td>
+                    <td>JFK</td>
+                    <td>LAX</td>
+                    <td>En Route</td>
+                    <td>15:30</td>
+                    <td>
+                        <a href="#" class="text-primary" title="View Logs"><i class="fas fa-file-alt"></i></a>
+                        <a href="#" class="text-warning ml-2" title="Send Alert"><i
+                                class="fas fa-exclamation-circle"></i></a>
+                        <a href="#" class="text-info ml-2" title="Contact"><i class="fas fa-phone"></i></a>
+                    </td>
+                </tr>
+                <!-- Additional rows can be added dynamically -->
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}

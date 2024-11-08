@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Air Traffic Control Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/current_flights.css' %}">
+    <link rel="stylesheet" href="{% static 'css/scheduled_flights.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+</head>
+
+<body>
+    {% include 'includes/navbar.html' %}
+    <div class="d-flex">
+        {% include 'includes/sidebar.html' %}
+        <div id="page-content-wrapper" class="container-fluid">
+            {% block content %}
+            {% endblock %}
+        </div>
+        {% include "includes/flight_plan_modal.html" %}
+        {% include 'includes/filter_modal.html' %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

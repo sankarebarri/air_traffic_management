@@ -1,0 +1,99 @@
+<div class="modal fade" id="flightPlanModal" tabindex="-1" aria-labelledby="flightPlanModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="flightPlanModalLabel">Create Flight Plan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Modal Tabs -->
+                <ul class="nav nav-tabs" id="flightPlanTabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="basic-details-tab" data-toggle="tab" href="#basic-details"
+                            role="tab" aria-controls="basic-details" aria-selected="true">Basic Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="flight-route-tab" data-toggle="tab" href="#flight-route" role="tab"
+                            aria-controls="flight-route" aria-selected="false">Flight Route</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="weather-considerations-tab" data-toggle="tab"
+                            href="#weather-considerations" role="tab" aria-controls="weather-considerations"
+                            aria-selected="false">Weather Considerations</a>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <form id="flightPlanForm" novalidate>
+                    <div class="tab-content mt-3">
+                        <!-- Basic Details Tab -->
+                        <div class="tab-pane fade show active" id="basic-details" role="tabpanel"
+                            aria-labelledby="basic-details-tab">
+                            <div class="form-group">
+                                <label for="flightNumber">Flight Number</label>
+                                <input type="text" class="form-control" id="flightNumber"
+                                    placeholder="Enter Flight Number" required>
+                                <div class="invalid-feedback">Flight Number is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departureAirport">Departure Airport</label>
+                                <input type="text" class="form-control" id="departureAirport"
+                                    placeholder="Enter Departure Airport" required>
+                                <div class="invalid-feedback">Departure Airport is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="arrivalAirport">Arrival Airport</label>
+                                <input type="text" class="form-control" id="arrivalAirport"
+                                    placeholder="Enter Arrival Airport" required>
+                                <div class="invalid-feedback">Arrival Airport is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departureTime">Departure Time</label>
+                                <input type="datetime-local" class="form-control" id="departureTime" required>
+                                <div class="invalid-feedback">Departure Time is required.</div>
+                            </div>
+                        </div>
+
+                        <!-- Flight Route Tab -->
+                        <div class="tab-pane fade" id="flight-route" role="tabpanel" aria-labelledby="flight-route-tab">
+                            <div class="form-group">
+                                <label for="flightLevel">Flight Level</label>
+                                <input type="number" class="form-control" id="flightLevel"
+                                    placeholder="Enter Flight Level (e.g., FL350)" required>
+                                <div class="invalid-feedback">Flight Level is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="route">Route</label>
+                                <textarea class="form-control" id="route" rows="3" placeholder="Enter Flight Route"
+                                    required></textarea>
+                                <div class="invalid-feedback">Flight Route is required.</div>
+                            </div>
+                        </div>
+
+                        <!-- Weather Considerations Tab -->
+                        <div class="tab-pane fade" id="weather-considerations" role="tabpanel"
+                            aria-labelledby="weather-considerations-tab">
+                            <div class="form-group">
+                                <label for="weatherConditions">Weather Conditions</label>
+                                <input type="text" class="form-control" id="weatherConditions"
+                                    placeholder="Enter Expected Weather Conditions">
+                            </div>
+                            <div class="form-group">
+                                <label for="windSpeed">Wind Speed</label>
+                                <input type="number" class="form-control" id="windSpeed"
+                                    placeholder="Enter Wind Speed (knots)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Flight Plan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

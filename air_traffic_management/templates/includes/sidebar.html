@@ -1,0 +1,21 @@
+<div id="sidebar-wrapper">
+    <div class="sidebar-heading">Menu</div>
+    <div class="list-group list-group-flush">
+        <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action"><i
+                class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="{% url 'current_flights' %}" class="list-group-item list-group-item-action"><i
+                class="fas fa-plane"></i> Current Flights</a>
+        <a href="{% url 'scheduled_flights' %}" class="list-group-item list-group-item-action"><i
+                class="fas fa-calendar-alt"></i> Scheduled Flights</a>
+        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-bell"></i> Alerts &
+            Notifications</a>
+        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-alt"></i> Reports</a>
+        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-cogs"></i> Settings</a>
+        <button type="button" class="btn btn-primary mt-3 ml-3 mr-3" data-toggle="modal" data-target="#flightPlanModal">
+            <i class="fas fa-plus-circle"></i> Create Flight Plan
+        </button>
+        <button type="button" class="btn btn-primary mt-3 ml-3 mr-3" data-toggle="modal" data-target="#filterModal">
+            <i class="fas fa-filter"></i> Filter Flights
+        </button>
+    </div>
+</div>

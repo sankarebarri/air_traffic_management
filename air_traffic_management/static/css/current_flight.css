@@ -1,0 +1,16 @@
+#flightsTable tbody tr:hover {
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+
+#flightsTable .text-primary {
+    color: #007bff !important;
+}
+
+#flightsTable .text-warning {
+    color: #ffc107 !important;
+}
+
+#flightsTable .text-info {
+    color: #17a2b8 !important;
+}

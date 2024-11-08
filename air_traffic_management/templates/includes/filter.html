@@ -1,0 +1,49 @@
+<!-- includes/filter.html -->
+<div class="filter-container mt-4 p-4 rounded shadow-sm">
+    <fieldset>
+        <legend class="filter-legend">Flight Filters</legend>
+        <div class="form-row mb-3">
+            <div class="col-md-4">
+                <label for="filterDepartureTime" class="font-weight-bold">Departure Time:</label>
+                <input type="datetime-local" id="filterDepartureTime" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label for="filterArrivalTime" class="font-weight-bold">Arrival Time:</label>
+                <input type="datetime-local" id="filterArrivalTime" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label for="filterCallSign" class="font-weight-bold">Call Sign:</label>
+                <input type="text" id="filterCallSign" class="form-control" placeholder="Enter Call Sign">
+            </div>
+        </div>
+        <div class="form-row mb-3">
+            <div class="col-md-4">
+                <label for="filterRegistrationNumber" class="font-weight-bold">Registration Number:</label>
+                <input type="text" id="filterRegistrationNumber" class="form-control"
+                    placeholder="Enter Registration Number">
+            </div>
+            <div class="col-md-4">
+                <label for="filterRegime" class="font-weight-bold">Regime:</label>
+                <select id="filterRegime" class="form-control">
+                    <option value="">Select Regime</option>
+                    <option value="IFR">IFR (Instrument Flight Rules)</option>
+                    <option value="VFR">VFR (Visual Flight Rules)</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="filterAirport" class="font-weight-bold">Airport:</label>
+                <input type="text" id="filterAirport" class="form-control" placeholder="Enter Airport Code (e.g., JFK)">
+            </div>
+        </div>
+        <div class="form-row mb-3">
+            <div class="col text-center">
+                <button type="button" class="btn btn-primary px-4" onclick="applyFilters()">
+                    <i class="fas fa-filter"></i> Apply Filters
+                </button>
+                <button type="reset" class="btn btn-outline-secondary px-4 ml-2">
+                    <i class="fas fa-undo-alt"></i> Reset Filters
+                </button>
+            </div>
+        </div>
+    </fieldset>
+</div>

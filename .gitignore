@@ -1,7 +1,8 @@
 # Backend (Django) specific ignores
 air_traffic_management/.env
 air_traffic_management/db.sqlite3
-air_traffic_management/media/             # Local media files (useful for audio uploads during development)
+air_traffic_management/media/    # Local media files (useful for audio uploads during development)
+air_traffic_management/airports/management/commands/api_data_fetched_stored.py
 
 # Byte-compiled / optimized / DLL files
 **/__pycache__/

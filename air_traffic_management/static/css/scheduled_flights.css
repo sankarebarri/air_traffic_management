@@ -1,0 +1,14 @@
+#scheduledFlightsTable tbody tr:hover {
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+
+/* Form Filter Styles */
+.form-inline label {
+    font-weight: bold;
+    color: #333;
+}
+
+.text-primary {
+    color: #007bff !important;
+}
