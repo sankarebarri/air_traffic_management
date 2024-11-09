@@ -19,7 +19,7 @@
             </thead>
             <tbody>
                 {% for flight in flights %}
-                <tr>
+                <tr class="{{ flight.status }}">
                     <td>{{ flight.call_sign }}</td>
                     <td>{{ flight.departure_airport }}</td>
                     <td>{{ flight.arrival_airport }}</td>
