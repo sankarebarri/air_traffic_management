@@ -155,14 +155,39 @@
     height: 50%;
 }
 
-/* Print-specific styling */
-@media print {
-    .flight-strip {
-        width: 100%;
-        margin: 0;
-    }
 
-    button {
-        display: none;
-    }
+/* Container for centering the print button */
+.print-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Print Button Styling */
+.print-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #007bff, #00c3ff); /* Gradient background */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); /* Subtle shadow */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Hover Effect for Print Button */
+.print-button:hover {
+    background: linear-gradient(135deg, #00aaff, #007bff); /* Slightly different gradient on hover */
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3); /* Enhanced shadow on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+/* Focus Style for Accessibility */
+.print-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
 }
