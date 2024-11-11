@@ -35,3 +35,8 @@ def flight_strip(request, flight_id):
     }
 
     return render(request, 'flights/flight_strip.html', context)
+
+
+# def flight_strip_print_view(request, flight_id):
+#     flight = get_object_or_404(Flights, id=flight_id)
+#     return render(request, 'flights/flight_strip_print.html', {'flight': flight})

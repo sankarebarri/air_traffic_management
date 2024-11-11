@@ -21,7 +21,7 @@
             </div>
             <div class="bottom-info">
                 <span id="regime">AI</span>
-                <span>23-11-2024</span>
+                <span id="print-date"></span>
             </div>
         </div>
     </div>
@@ -72,6 +72,21 @@
     <div class="vertical-line"></div>
 </div>
 <div class="print-button-container">
-    <button onclick="window.print()" class="print-button">Print Flight Strip</button>
+    <button class="print-button">Print Flight Strip</button>
 </div>
+
+<script>
+    // Define the handlePrint function to temporarily clear the page title for printing
+    function handlePrint() {
+        const originalTitle = document.title; // Store the original title
+        document.title = ''; // Temporarily clear the title
+        window.print(); // Trigger the print dialog
+        document.title = originalTitle; // Restore the original title after printing
+    }
+
+    // Add an event listener to the button to call handlePrint on click
+    document.querySelector('.print-button').addEventListener('click', handlePrint);
+</script>
+
+
 {% endblock %}

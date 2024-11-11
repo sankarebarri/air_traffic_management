@@ -71,7 +71,7 @@
     font-size: 0.9em;
     color: #666;
     font-style: italic;
-    max-width: calc(6cm - 4cm);
+    max-width: calc(6cm - 2cm);
     margin: 0 auto;
 }
 
@@ -190,4 +190,55 @@
 .print-button:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+@media print {
+    /* Initially hide everything */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Make only the .flight-strip visible */
+    .flight-strip, .flight-strip * {
+        visibility: visible;
+    }
+
+    /* Position .flight-strip to take up the full page */
+    .flight-strip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: 1px solid #333; /* Ensure borders are explicitly set */
+        box-sizing: border-box; /* Ensures borders are included in the width */
+    }
+
+    /* Remove body margin/padding for clean layout */
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    title {
+        display: none;
+        visibility: hidden;
+    }
+
+    /* Alternatively, if the title is rendered with an <h1> or another tag */
+    h1, h2, .page-title {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media print {
+    /* Hide any header elements in the content */
+    h1, h2, h3, h4, h5, h6, .page-title, .title {
+        display: none !important;
+    }
+}
+
+@page {
+    margin: 0; /* Removes margins on the printed page */
 }
