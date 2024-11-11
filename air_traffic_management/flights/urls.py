@@ -5,4 +5,5 @@ urlpatterns = [
     path('flights/', views.FlightListView.as_view(), name='flight_list'),
     path('scheduled-flights/', views.scheduled_flights_view, name='scheduled_flights'),
     path('current-flights/', views.current_flights_view, name='current_flights'),
+    path('flight-strip/<int:flight_id>', views.flight_strip, name='flight_strip'),
 ]

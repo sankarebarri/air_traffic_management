@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Scheduled Flights{% endblock %}
+
+{% block content %}
+<div class="flight-strip mt-4">
+
+    <!-- S1 Section with Call Sign, Registration Number, Aircraft Info, and Rule -->
+    <div class="section">
+        <div class="s1-content">
+            <div class="call-sign">{{ flight.call_sign }}</div>
+            <div class="registration-number">{{ flight.registration_number }}</div>
+            <div class="acft-info">
+                <span>{{ flight.aircraft_type }}</span>
+                <span>{{ flight.aircraft_speed }}</span>
+                <span>{{ flight.get_turbulence_category_display }}</span>
+            </div>
+            <div class="airport-info">
+                <span>{{ flight.departure_airport.icao_code }}</span>
+                <span>{{ flight.arrival_airport.icao_code }}</span>
+            </div>
+            <div class="bottom-info">
+                <span id="regime">AI</span>
+                <span>23-11-2024</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- S2 split horizontally with inline points and times, closer to top -->
+    <div class="section split-section">
+        <div class="split-part points-inline">
+            <div>Point 1 - 12:15</div>
+            <div>Point 2 - 13:30</div>
+            <div>Point 3 - 14:45</div>
+            <div>Point 4 - 15:00</div>
+        </div>
+    </div>
+
+    <!-- S3 split horizontally with continuous line -->
+    <div class="section split-section">
+        <div class="split-part"></div>
+        <div class="split-part"></div>
+    </div>
+
+    <!-- S4 with centered flight level -->
+    <div class="section">
+        <div class="flight-level">{{ flight.flight_level_requested }}</div>
+    </div>
+
+    <!-- S5 split horizontally with continuous line -->
+    <div class="section split-section">
+        <div class="split-part"></div>
+        <div class="split-part"></div>
+    </div>
+
+    <!-- S6 split horizontally with continuous line -->
+    <div class="section split-section">
+        <div class="split-part"></div>
+        <div class="split-part"></div>
+    </div>
+
+    <div class="section"></div>
+
+    <!-- Continuous lines across split sections -->
+    <div class="horizontal-line-s2-s3"></div>
+    <div class="horizontal-line-s5-s6"></div>
+
+    <!-- Horizontal line starting from the end of S1, 1 cm from the top, and extending 3 cm to the left -->
+    <div class="line-from-s1"></div>
+
+    <!-- Vertical line extending 1.5 cm down from the end of the horizontal line -->
+    <div class="vertical-line"></div>
+</div>
+{% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 from .models import Flights
@@ -25,3 +25,13 @@ def current_flights_view(request):
     }
 
     return render(request, 'flights/current_flights.html', context)
+
+
+def flight_strip(request, flight_id):
+
+    
+    context = {
+        'flight': get_object_or_404(Flights, id=flight_id)
+    }
+
+    return render(request, 'flights/flight_strip.html', context)
