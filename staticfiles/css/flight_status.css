@@ -1,0 +1,33 @@
+/* flight_status.css */
+
+/* Row styling for different flight statuses */
+
+/* Scheduled flights - light blue background */
+.flight-status-scheduled {
+    background-color: #e6f2ff;  /* Light blue */
+    color: #003366;             /* Darker blue text for better contrast */
+}
+
+/* Delayed flights - light yellow background */
+.flight-status-delayed {
+    background-color: #fff3cd;  /* Light yellow */
+    color: #856404;             /* Darker yellow/brown text for contrast */
+}
+
+/* Departed flights - light green background */
+.flight-status-departed {
+    background-color: #e6ffe6;  /* Light green */
+    color: #155724;             /* Darker green text for contrast */
+}
+
+/* Arrived flights - light grey background */
+.flight-status-arrived {
+    background-color: #f0f0f0;  /* Light grey */
+    color: #343a40;             /* Dark grey text */
+}
+
+/* Cancelled flights - light red background */
+.flight-status-cancelled {
+    background-color: #ffe6e6;  /* Light red */
+    color: #721c24;             /* Darker red text for contrast */
+}

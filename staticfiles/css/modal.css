@@ -1,0 +1,25 @@
+.modal-header {
+    background-color: #224abe;
+    color: white;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.nav-tabs .nav-link {
+    border-radius: 0;
+}
+
+.tab-content .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.modal-footer {
+    border-top: 1px solid #e9ecef;
+    padding-top: 1rem;
+}

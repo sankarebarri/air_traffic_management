@@ -1,0 +1,110 @@
+/* filter.css */
+
+/* Styling for Filter Container */
+.filter-container {
+    background-color: #f8f9fa; /* Light gray background for contrast */
+    border: 1px solid #e0e0e0; /* Border for subtle distinction */
+    border-radius: 10px; /* Smooth rounded corners */
+    max-width: 900px; /* Limit width for better readability */
+    margin: 0 auto; /* Center the filter container */
+}
+
+/* Fieldset Styling */
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Legend Styling */
+.filter-legend {
+    color: #224abe;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Labels Styling */
+label {
+    color: #444;
+    font-size: 1rem;
+}
+
+/* Inputs Styling */
+.filter-container input, 
+.filter-container select {
+    border-radius: 5px; /* Smooth rounded edges */
+    border: 1px solid #ced4da; /* Light border color */
+    padding: 10px; /* Comfortable padding for inputs */
+    font-size: 1rem; /* Larger font for readability */
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.filter-container input:focus, 
+.filter-container select:focus {
+    border-color: #224abe;
+    box-shadow: 0 0 5px rgba(34, 74, 190, 0.5);
+}
+
+/* Buttons Styling */
+.filter-container button {
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.filter-container .btn-primary {
+    background: linear-gradient(45deg, #6a89cc, #3b5998);
+    border: none;
+    color: white;
+}
+
+.filter-container .btn-primary:hover {
+    background-color: #365899;
+    transform: scale(1.05);
+}
+
+.filter-container .btn-outline-secondary {
+    border-color: #ced4da;
+    color: #444;
+}
+
+.filter-container .btn-outline-secondary:hover {
+    border-color: #224abe;
+    color: #224abe;
+}
+
+/* Form Row Styling */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Field Layout */
+.form-row .col-md-4 {
+    flex: 1 1 30%; /* Flex to take up roughly a third of the space */
+    min-width: 250px; /* Ensure each column has a minimum width */
+}
+
+/* Center Buttons */
+.form-row .col.text-center {
+    margin-top: 20px;
+}
+
+/* Button Padding */
+.btn {
+    padding: 10px 20px;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    .filter-container {
+        padding: 2rem;
+    }
+    .form-row {
+        flex-direction: column;
+    }
+    .form-row .col-md-4 {
+        width: 100%;
+    }
+}

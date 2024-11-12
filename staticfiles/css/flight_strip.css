@@ -1,0 +1,244 @@
+/* Main container with specified height and centered */
+.flight-strip {
+    width: 25.55cm;
+    height: 3cm;
+    display: grid;
+    grid-template-columns: 6.25cm 7cm 1.8cm 4.5cm 2cm 2cm 2cm;
+    border: 1px solid #333;
+    position: relative;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    margin: 0 auto;
+}
+
+/* Style for each section */
+.section {
+    /* padding: 4px; */
+    border-right: 1px solid #333;
+    height: 100%;
+    position: relative;
+}
+
+.section:last-child {
+    border-right: none;
+}
+
+/* S1 specific styles for content positioning */
+.s1-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 95%;
+    box-sizing: border-box;
+    margin-left: 0.2cm;
+    margin-top: 0.1cm;
+}
+
+.call-sign {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.registration-number {
+    font-size: 0.95em;
+    color: #333;
+}
+
+.acft-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95em;
+    color: #444;
+    margin-top: 4px;
+    max-width: calc(6cm - 3cm);
+}
+
+/* Positioning for Departure and Destination Airports */
+.airport-info {
+    position: absolute;
+    top: 1.2cm;
+    right: 0.3cm;
+    display: flex;
+    gap: 1cm;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Bottom row with AI and printed date, limited width */
+.bottom-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #666;
+    font-style: italic;
+    max-width: calc(6cm - 2cm);
+    margin: 0 auto;
+}
+
+#regime {
+    margin-right: 5px;
+}
+
+/* Horizontal and vertical lines */
+.line-from-s1 {
+    position: absolute;
+    top: 1cm;
+    left: calc(6.25cm - 3cm);
+    width: 3cm;
+    border-top: 1px solid #333;
+    z-index: 1;
+}
+
+.vertical-line {
+    position: absolute;
+    top: 1cm;
+    left: calc(6.25cm - 3cm);
+    height: 1.5cm;
+    border-left: 1px solid #333;
+    z-index: 1;
+}
+
+/* Continuous horizontal line across S2 and S3 */
+.horizontal-line-s2-s3 {
+    position: absolute;
+    top: 50%;
+    left: 6.25cm;
+    width: calc(7cm + 1.8cm);
+    border-top: 1px solid #333;
+    z-index: 1;
+}
+
+/* Continuous horizontal line across S5 and S6 */
+.horizontal-line-s5-s6 {
+    position: absolute;
+    top: 50%;
+    left: calc(6.25cm + 7cm + 1.8cm + 4.5cm);
+    width: calc(2cm + 2cm);
+    border-top: 1px solid #333;
+    z-index: 1;
+}
+
+/* Split section styling with continuous line */
+.split-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    height: 100%;
+}
+
+/* Styling for the top and bottom parts in split sections */
+.split-part {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+}
+
+/* Styling for S2 Top section with inline points and times, closer to top */
+.points-inline {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-size: 0.9em;
+    padding: 2px;
+    margin-top: 4px;
+}
+
+/* Styling for Flight Level in S4 */
+.flight-level {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    font-weight: bold;
+    height: 50%;
+}
+
+
+/* Container for centering the print button */
+.print-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Print Button Styling */
+.print-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #007bff, #00c3ff); /* Gradient background */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); /* Subtle shadow */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Hover Effect for Print Button */
+.print-button:hover {
+    background: linear-gradient(135deg, #00aaff, #007bff); /* Slightly different gradient on hover */
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3); /* Enhanced shadow on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+/* Focus Style for Accessibility */
+.print-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+@media print {
+    /* Initially hide everything */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Make only the .flight-strip visible */
+    .flight-strip, .flight-strip * {
+        visibility: visible;
+    }
+
+    /* Position .flight-strip to take up the full page */
+    .flight-strip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: 1px solid #333; /* Ensure borders are explicitly set */
+        box-sizing: border-box; /* Ensures borders are included in the width */
+    }
+
+    /* Remove body margin/padding for clean layout */
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    title {
+        display: none;
+        visibility: hidden;
+    }
+
+    /* Alternatively, if the title is rendered with an <h1> or another tag */
+    h1, h2, .page-title {
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media print {
+    /* Hide any header elements in the content */
+    h1, h2, h3, h4, h5, h6, .page-title, .title {
+        display: none !important;
+    }
+}
+
+@page {
+    margin: 0; /* Removes margins on the printed page */
+}
