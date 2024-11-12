@@ -67,7 +67,7 @@ class Command(BaseCommand):
 
     def create_flights(self):
         airports = list(Airport.objects.all())
-        aircraft_types = ["Boeing 737", "Airbus A320", "Cessna 172", "Gulfstream G650"],
+        aircraft_types = ["Boeing 737", "Airbus A320", "Cessna 172", "Gulfstream G650"]
 
         for i in range(100):
             departure_airport = random.choice(airports)
