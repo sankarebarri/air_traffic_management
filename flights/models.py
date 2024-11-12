@@ -4,7 +4,7 @@ from airports.models import Airport
 class Flights(models.Model):
     call_sign = models.CharField(max_length=20, unique=True)
     registration_number = models.CharField(max_length=50, unique=True)
-    aircraft_type = models.CharField(max_length=10)
+    aircraft_type = models.CharField(max_length=15)
     aircraft_speed = models.IntegerField(help_text="Speed in knots") 
     turbulence_category = models.CharField(
         max_length=6, 
