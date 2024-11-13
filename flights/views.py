@@ -37,6 +37,14 @@ def flight_strip(request, flight_id):
     return render(request, 'flights/flight_strip.html', context)
 
 
-# def flight_strip_print_view(request, flight_id):
-#     flight = get_object_or_404(Flights, id=flight_id)
-#     return render(request, 'flights/flight_strip_print.html', {'flight': flight})
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt  # Only for testing; recommended to remove for production with proper CSRF handling
+def create_flight_plan(request):
+    if request.method == 'POST':
+        print("Received POST data in Django:", request.POST)
+        # for key, value in request.POST.items():
+        #     print(f"{key}: {value}")  # Log each key-value pair in the Django console
+        return JsonResponse({'message': 'Form submitted successfully'}, status=200)
+    return JsonResponse({'error': 'Invalid request method'}, status=400)

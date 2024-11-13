@@ -18,11 +18,11 @@
                         <a class="nav-link" id="flight-route-tab" data-toggle="tab" href="#flight-route" role="tab"
                             aria-controls="flight-route" aria-selected="false">Flight Route</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" id="weather-considerations-tab" data-toggle="tab"
                             href="#weather-considerations" role="tab" aria-controls="weather-considerations"
                             aria-selected="false">Weather Considerations</a>
-                    </li>
+                    </li> -->
                 </ul>
 
                 <!-- Tab Content -->
@@ -32,26 +32,32 @@
                         <div class="tab-pane fade show active" id="basic-details" role="tabpanel"
                             aria-labelledby="basic-details-tab">
                             <div class="form-group">
-                                <label for="flightNumber">Flight Number</label>
-                                <input type="text" class="form-control" id="flightNumber"
-                                    placeholder="Enter Flight Number" required>
-                                <div class="invalid-feedback">Flight Number is required.</div>
+                                <label for="callSign">Call Sign</label>
+                                <input type="text" class="form-control" id="callSign" name="callSign"
+                                    placeholder="Enter Call Sign" required>
+                                <div class="invalid-feedback">Call Sign is required.</div>
                             </div>
+                            <!-- <div class="form-group">
+                                <label for="aircraftType">Aircraft Type</label>
+                                <input type="text" class="form-control" id="aircraftType" required>
+                                <div class="invalid-feedback">Aircraft Type is required.</div>
+                            </div> -->
                             <div class="form-group">
                                 <label for="departureAirport">Departure Airport</label>
-                                <input type="text" class="form-control" id="departureAirport"
+                                <input type="text" class="form-control" id="departureAirport" name="departureAirport"
                                     placeholder="Enter Departure Airport" required>
                                 <div class="invalid-feedback">Departure Airport is required.</div>
                             </div>
                             <div class="form-group">
                                 <label for="arrivalAirport">Arrival Airport</label>
-                                <input type="text" class="form-control" id="arrivalAirport"
+                                <input type="text" class="form-control" id="arrivalAirport" name="arrivalAirport"
                                     placeholder="Enter Arrival Airport" required>
                                 <div class="invalid-feedback">Arrival Airport is required.</div>
                             </div>
                             <div class="form-group">
                                 <label for="departureTime">Departure Time</label>
-                                <input type="datetime-local" class="form-control" id="departureTime" required>
+                                <input type="datetime-local" class="form-control" id="departureTime"
+                                    name="departureTime" required>
                                 <div class="invalid-feedback">Departure Time is required.</div>
                             </div>
                         </div>
@@ -60,20 +66,20 @@
                         <div class="tab-pane fade" id="flight-route" role="tabpanel" aria-labelledby="flight-route-tab">
                             <div class="form-group">
                                 <label for="flightLevel">Flight Level</label>
-                                <input type="number" class="form-control" id="flightLevel"
+                                <input type="number" class="form-control" id="flightLevel" name="flightLevel"
                                     placeholder="Enter Flight Level (e.g., FL350)" required>
                                 <div class="invalid-feedback">Flight Level is required.</div>
                             </div>
                             <div class="form-group">
                                 <label for="route">Route</label>
-                                <textarea class="form-control" id="route" rows="3" placeholder="Enter Flight Route"
-                                    required></textarea>
+                                <textarea class="form-control" id="route" name="route" rows="3"
+                                    placeholder="Enter Flight Route" required></textarea>
                                 <div class="invalid-feedback">Flight Route is required.</div>
                             </div>
                         </div>
 
                         <!-- Weather Considerations Tab -->
-                        <div class="tab-pane fade" id="weather-considerations" role="tabpanel"
+                        <!-- <div class="tab-pane fade" id="weather-considerations" role="tabpanel"
                             aria-labelledby="weather-considerations-tab">
                             <div class="form-group">
                                 <label for="weatherConditions">Weather Conditions</label>
@@ -85,7 +91,7 @@
                                 <input type="number" class="form-control" id="windSpeed"
                                     placeholder="Enter Wind Speed (knots)">
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="modal-footer">
@@ -97,3 +103,36 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById("flightPlanForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Collect form data
+        const formData = new FormData(this);
+        console.log("Form Data Sent to Backend:");
+        for (let [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`); // Log each key-value pair
+        }
+
+        // Submit data to the backend
+        fetch("{% url 'create_flight_plan' %}", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Backend Response:", data); // Log backend response
+                if (data.message) {
+                    alert(data.message);
+                    $('#flightPlanModal').modal('hide');
+                } else if (data.error) {
+                    alert('Data error: ' + data.error);
+                }
+            })
+            .catch(error => console.error('Fetch error:', error));
+    });
+</script>
