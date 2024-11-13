@@ -110,18 +110,20 @@
 
         // Collect form data
         const formData = new FormData(this);
-        console.log("Form Data Sent to Backend:");
-        for (let [key, value] of formData.entries()) {
-            console.log(`${key}: ${value}`); // Log each key-value pair
-        }
+        // console.log("Form Data Sent to Backend:");
+        // for (let [key, value] of formData.entries()) {
+        //     console.log(`${key}: ${value}`); // Log each key-value pair
+        // }
 
         // Submit data to the backend
         fetch("{% url 'create_flight_plan' %}", {
                 method: 'POST',
                 body: formData,
                 headers: {
-                    'X-CSRFToken': '{{ csrf_token }}'
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Accept': 'application/json'
                 }
+
             })
             .then(response => response.json())
             .then(data => {
