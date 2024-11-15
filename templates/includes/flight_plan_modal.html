@@ -26,7 +26,8 @@
                 </ul>
 
                 <!-- Tab Content -->
-                <form id="flightPlanForm" novalidate>
+                <form id="flightPlanForm" method="POST" action="{% url 'create_flight_plan' %}" novalidate>
+                    {% csrf_token %}
                     <div class="tab-content mt-3">
                         <!-- Basic Details Tab -->
                         <div class="tab-pane fade show active" id="basic-details" role="tabpanel"
@@ -37,11 +38,12 @@
                                     placeholder="Enter Call Sign" required>
                                 <div class="invalid-feedback">Call Sign is required.</div>
                             </div>
-                            <!-- <div class="form-group">
-                                <label for="aircraftType">Aircraft Type</label>
-                                <input type="text" class="form-control" id="aircraftType" required>
-                                <div class="invalid-feedback">Aircraft Type is required.</div>
-                            </div> -->
+                            <div class="form-group">
+                                <label for="registrationNumber">Registration Number</label>
+                                <input type="text" class="form-control" id="registrationNumber"
+                                    name="registrationNumber" placeholder="Enter Registration Number" required>
+                                <div class="invalid-feedback">Registration Number is required.</div>
+                            </div>
                             <div class="form-group">
                                 <label for="departureAirport">Departure Airport</label>
                                 <input type="text" class="form-control" id="departureAirport" name="departureAirport"
@@ -104,16 +106,16 @@
     </div>
 </div>
 
-<script>
+<!-- <script>
     document.getElementById("flightPlanForm").addEventListener("submit", function (event) {
         event.preventDefault();
 
         // Collect form data
         const formData = new FormData(this);
-        // console.log("Form Data Sent to Backend:");
-        // for (let [key, value] of formData.entries()) {
-        //     console.log(`${key}: ${value}`); // Log each key-value pair
-        // }
+        console.log("Form Data Sent to Backend:");
+        for (let [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`); // Log each key-value pair
+        }
 
         // Submit data to the backend
         fetch("{% url 'create_flight_plan' %}", {
@@ -137,4 +139,4 @@
             })
             .catch(error => console.error('Fetch error:', error));
     });
-</script>
+</script> -->
