@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Routes</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="{% static 'css/map_visualisation/map.css' %}">
+</head>
+
+<body>
+    <div id="map" style="height: 600px;"></div>
+    <script src="{% static 'js/map_visualisation/map.js' %}"></script>
+</body>
+
+</html>

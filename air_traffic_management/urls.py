@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('flights.urls')),
     path('', include('users.urls')),
+    path('', include('map_visualisation.urls')),
 ]
