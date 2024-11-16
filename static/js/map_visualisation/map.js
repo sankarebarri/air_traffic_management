@@ -1,31 +1,85 @@
-// Initialize the map
-const map = L.map("map").setView([0, 0], 2);
+// Set Gao and Bamako Coordinates
+const gaoCoords = [16.2484, -0.0056]; // Gao
+const bamakoCoords = [12.6392, -7.9499]; // Bamako
 
-// Add tile layer
+// Initialise map and centered it on Gao
+const map = L.map("map").setView(gaoCoords, 8);
+
+// add openstreet map layers and tiles
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution:
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  maxZoom: 19,
 }).addTo(map);
 
-// Example airports
-const airports = [
-  { name: "JFK Airport", coords: [40.6413, -73.7781] },
-  { name: "LAX Airport", coords: [33.9416, -118.4085] },
+// hardcoded segemented waypoints for the routes
+const waypoints = [
+  { name: "G", coords: gaoCoords },
+  { name: "A", coords: [15.8, -1.8] },
+  { name: "B", coords: [15.0, -3.8] },
+  { name: "C", coords: [14.2, -5.2] },
+  { name: "D", coords: [13.5, -6.5] },
+  { name: "S", coords: bamakoCoords },
 ];
 
-// Add markers
-airports.forEach((airport) => {
-  L.marker(airport.coords).addTo(map).bindPopup(`<b>${airport.name}</b>`);
+// add markers for each waypoints
+waypoints.forEach((point) => {
+  L.marker(point.coords).addTo(map).bindPopup(`${point.name}`);
 });
 
-// Example route
-const route = [
-  [40.6413, -73.7781],
-  [33.9416, -118.4085],
-];
+// extract the coordinates of the waypoints
+const routeCoordinates = waypoints.map((point) => point.coords);
 
-// Add polyline for route
-L.polyline(route, { color: "blue" }).addTo(map);
+//draw the polyline for the flight route
+const flightRoute = L.polyline(routeCoordinates, {
+  color: "blue",
+  weight: 4,
+  opacity: 0.8,
+}).addTo(map);
 
-// Fit the map to the route
-map.fitBounds(route);
+// adjust the map bounds to fit the entire route
+map.fitBounds(flightRoute.getBounds());
+
+/* SIMULATE THE AIRCRAFT MOVEMENTS */
+// add an aircraft marker (initially at Gao)
+const aircraftMarker = L.marker(gaoCoords, {
+  icon: L.icon({
+    iconUrl: "https://cdn-icons-png.flaticon.com/512/854/854894.png",
+    iconSize: [30, 30],
+  }),
+}).addTo(map);
+
+// function to interpolate between two points
+function interpolatePosition(start, end, t) {
+  return [
+    start[0] + (end[0] - start[0]) * t,
+    start[1] + (end[1] - start[1]) * t,
+  ];
+}
+
+// animate the aircraft along the route
+let segmentIndex = 0;
+let t = 0;
+const speed = 0.0003; // adjust speed as needed
+
+function animateAircraft() {
+  if (segmentIndex >= waypoints.length - 1) return; // stop at the last waypoint
+
+  const start = waypoints[segmentIndex].coords;
+  const end = waypoints[segmentIndex + 1].coords;
+
+  // interpolate positions
+  const newPosition = interpolatePosition(start, end, t);
+  aircraftMarker.setLatLng(newPosition);
+
+  // increment t and check if we reached the end of the segment
+  t += speed;
+  if (t >= 1) {
+    t = 0; // reset t
+    segmentIndex++;
+  }
+
+  // continue animation
+  requestAnimationFrame(animateAircraft);
+}
+
+// start the animation
+animateAircraft();
