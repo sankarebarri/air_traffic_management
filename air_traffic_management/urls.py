@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include('flights.urls')),
     path('', include('users.urls')),
     path('', include('map_visualisation.urls')),
+    path('', include('airports.urls')),
 ]

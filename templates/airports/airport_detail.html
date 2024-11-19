@@ -69,6 +69,37 @@
             </div>
         </div>
 
+        <!-- Weather Section -->
+        <h4 class="mt-5 mb-4">
+            <i class="fas fa-cloud-sun text-primary"></i> Weather Reports
+        </h4>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-info text-white">
+                        <i class="fas fa-thermometer-half"></i> METAR (Current Weather)
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Wind:</strong> 270°/10</p>
+                        <p><strong>Temperature:</strong> 30°C/10</p>
+                        <p><strong>Visibility:</strong> 10 km</p>
+                        <p><strong>Pressure:</strong> 1013 hPa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-warning text-white">
+                        <i class="fas fa-cloud"></i> TAF (Forecast)
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Next 6 hours:</strong> Light rain, visibility 8 km</p>
+                        <p><strong>Wind:</strong> Gusting to 25 knots</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Footer with Action -->
         <div class="card-footer bg-light d-flex justify-content-between">
             <a href="{% url 'airport_list' %}" class="btn btn-secondary">
