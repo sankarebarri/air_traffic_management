@@ -1,27 +1,78 @@
 <div id="sidebar-wrapper">
     <div class="sidebar-heading">Menu</div>
     <div class="list-group list-group-flush">
-        <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action"><i
-                class="fas fa-tachometer-alt"></i> Dashboard</a>
+        {% if user.is_authenticated %}
+        <!-- Dashboard -->
+        <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+        </a>
+
+        <!-- Airports -->
         <a href="{% url 'airport_list' %}" class="list-group-item list-group-item-action">
             <i class="fas fa-building"></i> Airports
         </a>
-        <a href="{% url 'current_flights' %}" class="list-group-item list-group-item-action"><i
-                class="fas fa-plane"></i> Current Flights</a>
-        <a href="{% url 'scheduled_flights' %}" class="list-group-item list-group-item-action"><i
-                class="fas fa-calendar-alt"></i> Scheduled Flights</a>
-        <a href="" class="list-group-item list-group-item-action">
+
+        <!-- Current Flights -->
+        {% if user.role == 'Admin' or user.role == 'Controller' %}
+        <a href="{% url 'current_flights' %}" class="list-group-item list-group-item-action">
+            <i class="fas fa-plane"></i> Current Flights
+        </a>
+        {% endif %}
+
+        <!-- Scheduled Flights -->
+        {% if user.role == 'Admin' or user.role == 'Controller' %}
+        <a href="{% url 'scheduled_flights' %}" class="list-group-item list-group-item-action">
+            <i class="fas fa-calendar-alt"></i> Scheduled Flights
+        </a>
+        {% endif %}
+
+        <!-- Weather Reports -->
+        <a href="{% url 'weather_reports' %}" class="list-group-item list-group-item-action">
             <i class="fas fa-cloud-sun"></i> Weather Reports
         </a>
-        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-bell"></i> Alerts &
-            Notifications</a>
-        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-file-alt"></i> Reports</a>
-        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-cogs"></i> Settings</a>
+
+        <!-- Add METAR -->
+        {% if user.role == 'Admin' or user.role == 'Meteorologist' %}
+        <a href="{% url 'metar_create' %}" class="list-group-item list-group-item-action">
+            <i class="fas fa-cloud"></i> Add METAR
+        </a>
+        {% endif %}
+
+        <!-- Add TAF -->
+        {% if user.role == 'Admin' or user.role == 'Meteorologist' %}
+        <a href="{% url 'taf_create' %}" class="list-group-item list-group-item-action">
+            <i class="fas fa-chart-line"></i> Add TAF
+        </a>
+        {% endif %}
+
+        <!-- Add SIGMET -->
+        {% if user.role == 'Admin' or user.role == 'Meteorologist' %}
+        <a href="{% url 'sigmet_create' %}" class="list-group-item list-group-item-action">
+            <i class="fas fa-exclamation-triangle"></i> Add SIGMET
+        </a>
+        {% endif %}
+
+        <!-- Alerts & Notifications -->
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="fas fa-bell"></i> Alerts & Notifications
+        </a>
+
+        <!-- Reports -->
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="fas fa-file-alt"></i> Reports
+        </a>
+
+        <!-- Settings -->
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="fas fa-cogs"></i> Settings
+        </a>
+
+        <!-- Create Flight Plan -->
+        {% if user.role == 'Admin' or user.role == 'Controller' %}
         <button type="button" class="btn btn-primary mt-3 ml-3 mr-3" data-toggle="modal" data-target="#flightPlanModal">
             <i class="fas fa-plus-circle"></i> Create Flight Plan
         </button>
-        <button type="button" class="btn btn-primary mt-3 ml-3 mr-3" data-toggle="modal" data-target="#filterModal">
-            <i class="fas fa-filter"></i> Filter Flights
-        </button>
+        {% endif %}
+        {% endif %}
     </div>
 </div>

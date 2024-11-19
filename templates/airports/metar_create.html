@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}Add METAR{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0"><i class="fas fa-cloud"></i> Add METAR</h4>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="id_airport" class="font-weight-bold">
+                        <i class="fas fa-plane"></i> Airport
+                    </label>
+                    {{ form.airport|add_class:"form-control" }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_observation_time" class="font-weight-bold">
+                        <i class="fas fa-clock"></i> Observation Time
+                    </label>
+                    {{ form.observation_time|add_class:"form-control" }}
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="id_temperature" class="font-weight-bold">
+                            <i class="fas fa-thermometer-half"></i> Temperature (°C)
+                        </label>
+                        {{ form.temperature|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="id_wind_speed" class="font-weight-bold">
+                            <i class="fas fa-wind"></i> Wind Speed (knots)
+                        </label>
+                        {{ form.wind_speed|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="id_wind_direction" class="font-weight-bold">
+                            <i class="fas fa-compass"></i> Wind Direction (°)
+                        </label>
+                        {{ form.wind_direction|add_class:"form-control" }}
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="id_visibility" class="font-weight-bold">
+                            <i class="fas fa-eye"></i> Visibility (meters)
+                        </label>
+                        {{ form.visibility|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="id_pressure" class="font-weight-bold">
+                            <i class="fas fa-tachometer-alt"></i> Pressure (hPa)
+                        </label>
+                        {{ form.pressure|add_class:"form-control" }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_cloud_coverage" class="font-weight-bold">
+                        <i class="fas fa-cloud"></i> Cloud Coverage
+                    </label>
+                    {{ form.cloud_coverage|add_class:"form-control" }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_precipitation" class="font-weight-bold">
+                        <i class="fas fa-umbrella"></i> Precipitation
+                    </label>
+                    {{ form.precipitation|add_class:"form-control" }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_remarks" class="font-weight-bold">
+                        <i class="fas fa-sticky-note"></i> Remarks
+                    </label>
+                    {{ form.remarks|add_class:"form-control" }}
+                </div>
+
+                <button type="submit" class="btn btn-success btn-block mt-4">
+                    <i class="fas fa-save"></i> Save METAR
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

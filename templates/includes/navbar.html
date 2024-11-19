@@ -4,6 +4,7 @@
     </a>
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-bell position-relative">
@@ -19,13 +20,24 @@
                 <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" data-toggle="dropdown">
                     <img src="https://picsum.photos/200/300" class="rounded-circle" width="25" height="25"
                         alt="Profile">
-                    Profile
+                    {{ user.username }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="#">Account Settings</a>
-                    <a class="dropdown-item" href="#">Log Out</a>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="dropdown-item">Log Out</button>
+                    </form>
                 </div>
+
             </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+            </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
