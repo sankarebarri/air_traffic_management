@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Airports{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Airports</h1>
+    <div class="list-group">
+        {% for airport in airports %}
+        <a href="{% url 'airport_detail' airport.pk %}" class="list-group-item list-group-item-action">
+            <strong>{{ airport.full_name }}</strong> ({{ airport.icao_code }})
+            <span class="text-muted float-right">{{ airport.city }}, {{ airport.country }}</span>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

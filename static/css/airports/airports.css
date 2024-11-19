@@ -1,0 +1,51 @@
+/* Header Animation */
+.header-animation {
+    height: 5px;
+    background: linear-gradient(to right, #007bff, #00c3ff, #007bff);
+    animation: slide 3s infinite linear;
+}
+
+@keyframes slide {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 0%; }
+}
+
+/* Card Enhancements */
+.card-header {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid #007bff;
+}
+
+.card-header img {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+}
+
+.card-footer {
+    border-top: 1px solid #ddd;
+}
+
+
+/* Image and Overlay Enhancements */
+.card .position-relative img {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px 10px 0 0;
+}
+
+.card .position-relative .text-shadow {
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Section Styling */
+.card-body h4 {
+    border-left: 4px solid #007bff;
+    padding-left: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Footer Styling */
+.card-footer {
+    border-top: 2px solid #ddd;
+}

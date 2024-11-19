@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ airport.full_name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Main Card -->
+    <div class="card shadow-lg border-0">
+        <!-- Header with Background and Placeholder Image -->
+        <div class="card-header bg-dark text-white position-relative">
+            <div class="d-flex align-items-center">
+                <!-- Placeholder Airport Image -->
+                <img src="https://picsum.photos/seed/picsum/200/300" alt="Airport" class="img-fluid rounded-circle"
+                    style="width: 80px; height: 80px; margin-right: 15px; border: 3px solid white;">
+                <div>
+                    <h3 class="m-0">{{ airport.full_name }}</h3>
+                    <p class="mb-0">{{ airport.city }}, {{ airport.country }}</p>
+                </div>
+            </div>
+            <!-- Decorative Animation -->
+            <div class="header-animation"></div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="card-body">
+            <!-- General Info Section -->
+            <h4 class="mb-4">
+                <i class="fas fa-info-circle text-primary"></i> General Information
+            </h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><i class="fas fa-city text-secondary"></i> <strong>City:</strong> {{ airport.city }}</p>
+                    <p><i class="fas fa-globe text-secondary"></i> <strong>Country:</strong> {{ airport.country }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><i class="fas fa-mountain text-secondary"></i> <strong>Altitude:</strong> {{ airport.altitude }}
+                        ft</p>
+                </div>
+            </div>
+
+            <!-- Runway Info Section -->
+            <h4 class="mt-5 mb-4">
+                <i class="fas fa-road text-primary"></i> Runway Information
+            </h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><i class="fas fa-arrows-alt-h text-secondary"></i> <strong>Runway Length:</strong>
+                        {{ airport.runway_length }} m</p>
+                </div>
+                <div class="col-md-6">
+                    <p><i class="fas fa-arrows-alt-v text-secondary"></i> <strong>Runway Width:</strong>
+                        {{ airport.runway_width }} m</p>
+                </div>
+            </div>
+
+            <!-- Frequency Section -->
+            <h4 class="mt-5 mb-4">
+                <i class="fas fa-broadcast-tower text-primary"></i> Communication Frequencies
+            </h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><i class="fas fa-wifi text-secondary"></i> <strong>Tower Frequency:</strong>
+                        {{ airport.tower_frequency }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><i class="fas fa-satellite-dish text-secondary"></i> <strong>ACC Frequency:</strong>
+                        {{ airport.acc_frequency }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer with Action -->
+        <div class="card-footer bg-light d-flex justify-content-between">
+            <a href="{% url 'airport_list' %}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Back to Airports
+            </a>
+            <button class="btn btn-primary">
+                <i class="fas fa-edit"></i> Edit Airport
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -11,6 +11,19 @@ from datetime import datetime
 from django.db.models import Q
 from django.contrib import messages
 
+
+from django.views.generic import ListView, DetailView
+
+class AirportListView(ListView):
+    model = Airport
+    template_name = 'airports/airport_list.html'
+    context_object_name = 'airports'
+
+
+class AirportDetailView(DetailView):
+    model = Airport
+    template_name = 'airports/airport_detail.html'
+    context_object_name = 'airport'
 class FlightListView(generic.ListView):
     model = Flights
     template_name = 'flights/flight_list.html'
