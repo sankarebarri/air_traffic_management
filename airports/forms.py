@@ -1,5 +1,5 @@
 from django import forms
-from .models import METAR, TAF, SIGMET
+from .models import METAR, TAF, SIGMET, NOTAM
 
 class METARForm(forms.ModelForm):
     class Meta:
@@ -14,4 +14,9 @@ class TAFForm(forms.ModelForm):
 class SIGMETForm(forms.ModelForm):
     class Meta:
         model = SIGMET
+        fields = '__all__'
+
+class NOTAMForm(forms.ModelForm):
+    class Meta:
+        model = NOTAM
         fields = '__all__'

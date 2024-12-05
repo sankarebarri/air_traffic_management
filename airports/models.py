@@ -102,3 +102,45 @@ class SIGMET(models.Model):
 
     def __str__(self):
         return f"SIGMET: {self.phenomenon} ({self.severity}) - {self.airport.icao_code}"
+
+
+from django.db import models
+from airports.models import Airport
+from django.utils.timezone import now
+
+class NOTAM(models.Model):
+    airport = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name="notams")
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    issued_at = models.DateTimeField(default=now)
+    valid_until = models.DateTimeField()
+
+    def __str__(self):
+        return f"NOTAM: {self.title} ({self.airport.icao_code})"
+
+class Alert(models.Model):
+    GRAVITAS_CHOICES = [
+        ('Critical', 'Critical'),
+        ('High', 'High'),
+        ('Medium', 'Medium'),
+        ('Low', 'Low'),
+    ]
+
+    IMPACT_CHOICES = [
+        ('Airport Closure', 'Airport Cosure'),
+        ('Runway Closure', 'Runway Closure'),
+        ('Weather Impact', 'Weather Impact'),
+        ('System Outage', 'System Outage'),
+        ('Other Reason', 'Other Reason'),
+    ]
+
+    airport = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name="alerts")
+    notam = models.ForeignKey(NOTAM, on_delete=models.SET_NULL, null=True, blank=True, related_name="alerts")
+    gravitas = models.CharField(max_length=10, choices=GRAVITAS_CHOICES, default='Medium')
+    impact_type = models.CharField(max_length=50, choices=IMPACT_CHOICES)
+    description = models.TextField()
+    active = models.BooleanField(default=True)
+    timestamp = models.DateTimeField(default=now)
+
+    def __str__(self):
+        return f"{self.airport.icao_code} - {self.gravitas} Alert"

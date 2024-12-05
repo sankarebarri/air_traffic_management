@@ -1,0 +1,16 @@
+.bg-critical {
+    background-color: #dc3545; /* Red */
+    color: white;
+}
+.bg-high {
+    background-color: #ffc107; /* Yellow */
+    color: black;
+}
+.bg-medium {
+    background-color: #17a2b8; /* Blue */
+    color: white;
+}
+.bg-low {
+    background-color: #28a745; /* Green */
+    color: white;
+}

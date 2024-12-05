@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Alerts & Notifications{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2><i class="fas fa-bell"></i> Alerts & Notifications</h2>
+
+    <div class="row">
+        {% for alert in alerts %}
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-{{ alert.gravitas|lower }} text-white">
+                    <strong>{{ alert.gravitas }}</strong> - {{ alert.impact_type }}
+                </div>
+                <div class="card-body">
+                    <p>{{ alert.description }}</p>
+                    <p><strong>Airport:</strong> {{ alert.airport.full_name }}</p>
+                    <p><strong>Timestamp:</strong> {{ alert.timestamp|date:"Y-m-d H:i" }}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'alert_detail' alert.id %}" class="btn btn-primary btn-sm">
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

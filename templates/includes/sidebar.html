@@ -30,6 +30,9 @@
         <a href="{% url 'weather_reports' %}" class="list-group-item list-group-item-action">
             <i class="fas fa-cloud-sun"></i> Weather Reports
         </a>
+        <a href="{% url 'notam_list' %}" class="list-group-item list-group-item-action">
+            <i class="fas fa-file-alt"></i> NOTAMs
+        </a>
 
         <!-- Add METAR -->
         {% if user.role == 'Admin' or user.role == 'Meteorologist' %}
@@ -40,20 +43,20 @@
 
         <!-- Add TAF -->
         {% if user.role == 'Admin' or user.role == 'Meteorologist' %}
-        <a href="{% url 'taf_create' %}" class="list-group-item list-group-item-action">
+        <a href="" class="list-group-item list-group-item-action">
             <i class="fas fa-chart-line"></i> Add TAF
         </a>
         {% endif %}
 
         <!-- Add SIGMET -->
         {% if user.role == 'Admin' or user.role == 'Meteorologist' %}
-        <a href="{% url 'sigmet_create' %}" class="list-group-item list-group-item-action">
+        <a href="" class="list-group-item list-group-item-action">
             <i class="fas fa-exclamation-triangle"></i> Add SIGMET
         </a>
         {% endif %}
 
         <!-- Alerts & Notifications -->
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="{% url 'alert_list' %}" class="list-group-item list-group-item-action">
             <i class="fas fa-bell"></i> Alerts & Notifications
         </a>
 

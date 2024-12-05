@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from airports.models import Airport, METAR, TAF, SIGMET
+from django.shortcuts import render, get_object_or_404
+from airports.models import Airport, METAR, TAF, SIGMET, NOTAM, Alert
 
 def weather_reports_view(request):
     airports = Airport.objects.all()  # Fetch all airports
@@ -21,11 +21,32 @@ def weather_reports_view(request):
 
     return render(request, 'airports/weather_reports.html', {'weather_data': weather_data})
 
+def notam_list(request):
+    notams = NOTAM.objects.all()
+    context = {
+        "notams": notams
+    }
+    return render(request, 'airports/notam_list.html', context)
+
+def notam_detail(request, pk):
+    notam = get_object_or_404(NOTAM, pk=pk)
+    context = {
+        "notam": notam
+    }
+    return render(request, 'airports/notam_detail.html', context)
+
+def alert_list(request):
+    alerts = Alert.objects.filter(active=True).order_by('-timestamp')
+    return render(request, 'airports/alerts_list.html', {'alerts': alerts})
+
+def alert_detail(request, alert_id):
+    alert = get_object_or_404(Alert, id=alert_id)
+    return render(request, 'airports/alert_detail.html', {'alert': alert})
 
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from .models import METAR, TAF, SIGMET
-from .forms import METARForm, TAFForm, SIGMETForm
+from .forms import METARForm, TAFForm, SIGMETForm, NOTAMForm
 
 class METARCreateView(CreateView):
     model = METAR
@@ -44,3 +65,9 @@ class SIGMETCreateView(CreateView):
     form_class = SIGMETForm
     template_name = 'sigmet_create.html'
     success_url = reverse_lazy('weather_reports')
+
+class NOTAMCreateView(CreateView):
+    model = NOTAM
+    form_class = NOTAMForm
+    template_name = 'notam_create.html'
+    success_url = reverse_lazy('notam_detail')

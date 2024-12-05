@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Airport, METAR, TAF, SIGMET
+from .models import Airport, METAR, TAF, SIGMET, NOTAM, Alert
 
 @admin.register(Airport)
 class AirportAdmin(admin.ModelAdmin):
@@ -9,3 +9,5 @@ class AirportAdmin(admin.ModelAdmin):
 admin.site.register(METAR)
 admin.site.register(TAF)
 admin.site.register(SIGMET)
+admin.site.register(NOTAM)
+admin.site.register(Alert)

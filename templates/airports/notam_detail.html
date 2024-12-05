@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}NOTAM Details{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2><i class="fas fa-file-alt"></i> {{ notam.title }}</h2>
+    <p>{{ notam.description }}</p>
+    <small>Issued At: {{ notam.issued_at }}</small><br>
+    <small>Valid Until: {{ notam.valid_until }}</small>
+</div>
+{% endblock %}
